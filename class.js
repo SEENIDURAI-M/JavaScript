@@ -9,5 +9,5 @@ class Person {
     }
   }
   const john = new Person('Seeni', 21);
-  john.sayHello(); // Output: Hello, my name is John and I'm 30 years old.
+  john.sayHello(); 
     

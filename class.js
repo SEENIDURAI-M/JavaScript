@@ -8,6 +8,6 @@ class Person {
       console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
     }
   }
-  const john = new Person('John', 30);
+  const john = new Person('Seeni', 21);
   john.sayHello(); // Output: Hello, my name is John and I'm 30 years old.
     

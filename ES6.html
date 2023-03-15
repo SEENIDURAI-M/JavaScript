@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <title>ES 6</title>
+</head>
+
+<body>
+    <script>
+        //Block-scoped function
+        function foo() {
+            console.log("1");
+        }
+        foo() === 0
+        {
+            function foo() {
+                console.log("2");
+            }
+            foo()
+        }
+        foo() === 1
+        //Arrow Functions
+        let evens = [1, 2, 3, 4, 5];
+        odds = evens.map(v => v + 1);
+        for (let ele of odds) {
+            console.log(ele);
+        }
+        pairs = evens.map(v => ({ even: v, odd: v + 1 }))
+        nums = evens.map((v, i) => v + i)
+        console.log(pairs);
+        console.log(nums);
+        //Arrow Functions Statement Bodies
+        var nums = [5, 7, 10, 12, 15, 28, 29, 20];
+        var fives = [];
+        nums.forEach(v => {
+            if (v % 5 === 0)
+                fives.push(v)
+        })
+        console.log(fives);
+        //Extended Parameter Handling true or false
+        function f(x, y = 7, z = 42) {
+            return x + y + z
+        }
+        const res = f(1) === 50
+        console.log(res);
+        //Rest Parameter
+        function f1(x, y, a) {
+            return (x + y) * a.length
+        }
+        const res2 = f1(1, 2, "7") === 9;
+        console.log(res2);
+        //Maps
+        const names = new Map([
+            ["Gopi", "Aspire"],
+            ["Thanish Jackson", "TCS"],
+            ["Vinoth", "CTS"]
+        ]);
+        console.log(names.get("Vinoth"))
+        //Sets
+        const number = new Set();
+        number.add(1);
+        number.add(2);
+        number.add(3);
+        console.log(number);
+        //Symbol
+        let salary = Symbol();
+        let details = {};
+        details.name = 'dinesh';
+        details.id = '3445';
+        details[salary] = '4lpa';
+        console.log(Object.keys(details));
+        console.log(details);
+        //Default Parameter Values
+        function para(first_name, last_name = " Kumar") {
+            return first_name + last_name;
+        }
+        const full_name = para("Dinesh");
+        console.log(full_name);
+        //Function Rest Parameter
+        function adding(...args) {
+            let result = 0;
+            for (let arg of args) {
+                result += arg;
+            }
+            return result;
+        }
+        let sum = adding(4, 9, 16, 25, 29, 100, 66, 77);
+        console.log(sum);
+        //classes
+        class car {
+            constructor(model, mileage) {
+                this.model = model;
+                this.mileage = mileage;
+            }
+        }
+        const car_1 = new car("Maruti suzuki swift", 25);
+        const car_2 = new car("Honda Amaze", 27)
+        console.log(car_1.model + " " + car_1.mileage);
+        console.log(car_1.model + " " + car_2.mileage);
+        //inheritance
+        class company {
+            constructor(name, location) {
+                this.name = name;
+                this.location = location;
+            }
+            details_1() {
+                console.log(`The company name is ${this.name},location ${this.location} and number of employees ${this.no_of_employees}`)
+            }
+        }
+        class Aspire extends company {
+            constructor(no_of_employees) {
+                super("Aspire systems", "chennai")
+                this.no_of_employees = no_of_employees;
+            }
+
+        }
+        class CTS extends company {
+
+        }
+        let company_1 = new Aspire(1000);
+        company_1.details_1();
+        let company_2 = new CTS("CTS", "Siruseri")
+        company_2.details_1();
+        //Iterators
+        let pre = 0;
+        let current = 1;
+        for (let iternator = 1; iternator <= 10; iternator++) {
+            let next = pre + current;
+            console.log(next);
+            pre = current;
+            current = next;
+        }
+        //Proxy set get
+        let obj = {
+            name: "dinesh",
+            native: "salem",
+            age: 22
+        }
+        let obj_proxy = new Proxy(obj, {
+            get(key, value) {
+                if (key[value] == 22) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            },
+            Set(element, pro, value) {
+                if (typeof value == "number") {
+                    element[pro] = value;
+                }
+            }
+        })
+        console.log(obj_proxy.age);
+        obj.age = 20;
+        console.log(obj.age);
+        //spread operators
+        const mobilephones = ["samsung", "vivo", "oppo", "nokia"];
+        const mobilephones_1 = [...mobilephones];
+        console.log(mobilephones);
+        console.log(mobilephones_1);
+        const new_mobilephones = [...mobilephones, "redmi", "sony", "realme"];
+        console.log(new_mobilephones);
+        //Array destructuring
+        let full_name1 = ["dinesh", "kumar"];
+        let [firstName, surname] = full_name1;
+        console.log(firstName);
+        console.log(surname);
+        //Example - 2
+        let [firstName1, , age1] = ["John", "son", "27", "he is software Engineer"];
+        console.log(age1);
+        //Object destructuring
+        let hotel = {
+            title: "Menu",
+            dosai: 20,
+            idly: 10
+        };
+        let { title, dosai, idly } = hotel;
+        console.log(title);
+        console.log(dosai);
+        console.log(idly);
+        //adding new element in object
+        // let { pongal = prompt("pongal?"),  uppma= prompt("uppma") } = hotel;
+        // console.log(pongal);
+        // console.log(uppma);
+        //New Built-In Methods - find
+        console.log([2, 4, 6, 8, 9].find(x => x % 2 !== 0));
+        //New Built-In Methods - repeat
+        console.log("repeat ".repeat(3));
+        //String Searching
+        console.log("dinesh".startsWith("d", 0));
+        console.log("dinesh".endsWith("s", 1));
+        console.log("kumar ".includes(" "));
+        console.log("dinesh kumar".includes("kumar"));
+        console.log("kumar".indexOf("k") === 1);
+        console.log("kumar".indexOf("u") === (2 + 2 + 2 - 5));
+        //Number Type Checking
+        console.log(Number.isNaN(23));
+        console.log(Number.isFinite(123));
+        console.log(Number.isFinite(Infinity));
+        //Number Safety Checking up to 15 digit
+        console.log(Number.isSafeInteger(42));
+        console.log(Number.isSafeInteger(4200000000000000));
+        //Number Comparison
+        console.log(Math.abs((-9)));
+        //Number Truncation
+        console.log(Math.trunc(42.9));
+        console.log(Math.trunc(42.1));
+        //Number Sign Determination
+        console.log(Math.sign(756));
+        console.log(Math.sign(-7345));
+        console.log(Math.sign(NaN));
+
+
+    </script>
+</body>
+
+</html>
